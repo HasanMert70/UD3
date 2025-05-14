@@ -1,0 +1,182 @@
+/**
+ * Represents a member of a library, including their name, unique member ID,
+ * any fines owed, membership type (student or faculty), and active status.
+ * This class provides functionality to manage and display member information.
+ *
+ * @author <hasanmert.konukcu@icloud.com>
+ */
+
+
+/* UML CLASS DIAGRAM:
+-----------------------------------------
+<LibraryMember>
+-----------------------------------------
+- name : string
+- memberID : int
+- finesDue : double
+- membershipType : char
+- isActive : boolean
+-----------------------------------------
++ LibraryMember()
++ LibraryMember(String name, int memberID, double finesDue, char membershipType, boolean isActive)
++ LibraryMember(LibraryMember other)
++ getName() : String
++ getMemberID() : int
++ getFinesDue() : double
++ getMembershipType() : char
++ getIsActive() : boolean
++ setName(String name) : void
++ setMemberID(int memberID) : void
++ setFinesDue(double finesDue) : void
++ setMembershipType(char membershipType) : void
++ setIsActive(boolean isActive) : void
++ setAll(String name, int memberID, double finesDue, char membershipType, boolean isActive) : void
++ toString() : string
++ equals(LibraryMember other) : boolean
+-----------------------------------------
+*/
+
+public class LibraryMember
+{
+    /***** INSTANCE VARIABLES *****/
+   
+    private String name;
+    private int memberID;
+    private double finesDue;
+    private char membershipType; // 'S' = student 'F' = faculty
+    private boolean isActive;
+
+    /***** CONSTRUCTORS *****/
+    // Default Constructor: sets default values and assigns a unique member ID.
+   
+    public LibraryMember()
+    {
+        this.name = "";
+        this.memberID = 0;
+        this.finesDue = 0.0;
+        this.membershipType = 'S';
+        this.isActive = true;
+    }
+
+    // Full Constructor: allows setting all values manually.
+    public LibraryMember(String name, int memberID, double finesDue, char membershipType, boolean isActive)
+    {
+        this.name = name;
+        this.memberID = memberID;
+        this.finesDue = finesDue;
+        this.membershipType = membershipType;
+        this.isActive = isActive;
+    }
+   
+    // Copy Constructor: creates a new object with the same values as another.
+    public LibraryMember(LibraryMember other)
+    {
+        this.name = other.name;
+        this.memberID = other.memberID;
+        this.finesDue = other.finesDue;
+        this.membershipType = other.membershipType;
+        this.isActive = other.isActive;
+    }
+   
+    /***** ACCESSORS *****/
+//Getters: return values of instance variables.
+    public String getName()
+    {
+        return name;
+    }
+
+    public int getMemberID()
+    {
+        return memberID;
+    }
+
+    public double getFinesDue()
+    {
+        return finesDue;
+    }
+
+    public char getMembershipType()
+    {
+        return membershipType;
+    }
+
+    public boolean getIsActive()
+    {
+        return isActive;
+    }
+
+    /***** MUTATORS *****/
+//Setters: change the values of instance variables.
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+
+    public void setMemberID(int memberID)
+    {
+        this.memberID = memberID;
+    }
+
+    public void setFinesDue(double finesDue)
+    {
+        this.finesDue = finesDue;
+    }
+
+    public void setMembershipType(char membershipType)
+    {
+        this.membershipType = membershipType;
+    }
+
+    public void setIsActive(boolean isActive)
+    {
+        this.isActive = isActive;
+    }
+    //setAll(): sets all variables at once.
+    public void setAll(String name, int memberID, double finesDue, char membershipType, boolean isActive)
+    {
+        this.name = name;
+        this.memberID = memberID;
+        this.finesDue = finesDue;
+        this.membershipType = membershipType;
+        this.isActive = isActive;
+    }
+
+    /***** OTHER REQUIRED METHODS *****/
+//toString(): returns a readable string version of the object
+    public String toString()
+    {
+        return "Name: " + name + ", Member ID: " + memberID + ", Fines Due: $" + finesDue + ", Membership Type: " + membershipType + ", Active: " + isActive;
+    }
+   
+    //equals(): compares two LibraryMember objects
+    public boolean equals(LibraryMember other)
+    {
+        if (other == null)
+        {
+            return false;
+        }
+        return this.name.equals(other.name)
+        && this.memberID == other.memberID
+        && this.finesDue == other.finesDue
+        && this.membershipType == other.membershipType
+        && this.isActive == other.isActive;
+    }
+   
+    public String getLibraryCard()
+    {
+    String border = "+----------------------------+";
+    return border + "\n" +
+           "|     LIBRARY MEMBER CARD   |\n" +
+           border + "\n" +
+           String.format("| Name: %-20s |\n", name) +
+           String.format("| Member ID: %-22d |\n", memberID) +
+           String.format("| Type: %-20s |\n", membershipType == 'S' ? "Student" : "Faculty") +
+           String.format("| Active: %-18s |\n", isActive ? "Yes" : "No") +
+           String.format("| Fines Due: $%-13.2f |\n", finesDue) +
+           border;
+    }
+    
+
+}
+
+
