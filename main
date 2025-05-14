@@ -1,0 +1,73 @@
+/********************************************
+ *  AUTHORS:<hasanmert.konukcu@icloud.com, crosas@miracosta.edu>
+ ********************************************/
+
+/********************************************
+ *  TESTER CLASS
+ *********************************************
+ *  PROGRAM DESCRIPTION:
+ *  This program tests all methods of the Book and LibraryMember classes.
+ *  It creates instances using different constructors, modifies them using
+ *  setters and setAll, and verifies functionality using toString() and equals().
+ *********************************************/
+
+public class Main
+{
+    public static void main(String[] args)
+    {
+        // Declare at least one variable using each of the constructors
+        Book book1 = new Book(); // default constructor
+        Book book2 = new Book("1984", "George Orwell", 9.99, 328, false); // full constructor
+        Book book3 = new Book(book2); // copy constructor
+
+        // Display book details
+        System.out.println(book1);
+        System.out.println(book2);
+        System.out.println(book3);
+
+        // Test setters and getters
+        book1.setTitle("Brave New World");
+        book1.setAuthor("Aldous Huxley");
+        book1.setPrice(12.50);
+        book1.setPageCount(288);
+        book1.setIsCheckedOut(true);
+        System.out.println("Updated Book1: " + book1);
+
+        // Test setAll
+        book1.setAll("Fahrenheit 451", "Ray Bradbury", 8.99, 194, false);
+        System.out.println("Book1 after setAll: " + book1);
+
+        // Test equals method
+        System.out.println("book2 equals book3? " + book2.equals(book3));
+        System.out.println("book1 equals book2? " + book1.equals(book2));
+
+        // Create LibraryMember instances using each constructor
+        LibraryMember member1 = new LibraryMember(); // default
+        LibraryMember member2 = new LibraryMember("Alice Smith", 101, 2.50, 'S', true); // full
+        LibraryMember member3 = new LibraryMember(member2); // copy
+
+        // Display members
+        System.out.println(member1);
+        System.out.println(member2);
+        System.out.println(member3);
+
+        // Test setters and getters
+        member1.setName("Bob Jones");
+        member1.setMemberID(202);
+        member1.setFinesDue(0.0);
+        member1.setMembershipType('F');
+        member1.setIsActive(false);
+        System.out.println("Updated Member1: " + member1);
+
+        // Test setAll
+        member1.setAll("Charlie Brown", 303, 5.75, 'S', true);
+        System.out.println("Member1 after setAll: " + member1);
+
+        // Test equals method
+        System.out.println("member2 equals member3? " + member2.equals(member3));
+        System.out.println("member1 equals member2? " + member1.equals(member2));
+
+        // Display library card
+        System.out.println(member2.getLibraryCard());
+    }
+}
