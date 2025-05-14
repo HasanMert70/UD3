@@ -1,0 +1,152 @@
+
+
+/**
+ * Represents <This class contains all necessary info for a book to be checked out>
+ *
+ * @author <crosas@miracosta.edu>
+ *
+ **/
+
+/* UML CLASS DIAGRAM:
+-----------------------------------------
+Book
+-----------------------------------------
+- title : String
+- author : String
+- price : double
+- pageCount : int
+- isCheckedOut : boolean
+-----------------------------------------
++ Book()
++ Book(String title, String author, double price, int pageCount, boolean isCheckedOut)
++ getTitle() : String
++ getAuthor() : String
++ getPrice() : double
++ getPageCount() : int
++ getIsCheckedOut() : boolean
++ setTitle(title : String) : void
++ setAuthor(author : String) : void
++ setPrice(price : double) : void
++ setPageCount(pageCount: int) : void
++ setIsCheckedOut(isCheckedOut : boolean) : void
++ setAll(title : String, author : String, price : double, pageCount: int, isCheckedOut : boolean)
++ toString(): String 
++ equals(other : Book) : boolean
+-----------------------------------------
+*/
+public class Book {
+
+    /***** INSTANCE VARIABLES *****/
+
+
+    private String title;
+    private String author;
+    private double price;
+    private int pageCount;
+    private boolean isCheckedOut;
+
+    /***** CONSTRUCTORS *****/
+    //no-argument/ defalt constructor , sets default values for the book information
+    public Book()
+    {
+        this.title = "new book"; // since the instance variables are not passed in then the this. in not necessarily needed
+        this.author = "some author"; // maybe create an array lsit that will generate a real book name out of random names from an index of names within the array rather than having "new book" or "some autho"
+        this.price = (double) Math.random() * 49.0 + 1.0;
+        this.pageCount = (int) Math.random() * 250 + 1;
+        this.isCheckedOut = false;
+
+    }
+
+    // full constructor, passes all information into parameters and sets values for each corresponding instance variable
+    public Book(String title, String author, double price, int pageCount, boolean isCheckedOut)
+    {
+        this.title = title; // since the instance variables are passed in, "this." is necessary
+        this.author = author;
+        this.price = price;
+        this.pageCount = pageCount;
+        this.isCheckedOut = isCheckedOut;
+    }
+
+    // Copy Constructor: creates a new object with the same values as another.
+    public Book(Book other)
+    {
+        this.title = other.title; // since the instance variables are passed in, "this." is necessary 
+        this.author = other.author;
+        this.price = other.price;
+        this.pageCount = other.pageCount;
+        this.isCheckedOut = other.isCheckedOut;
+    }
+
+    /***** ACCESSORS *****/
+    public String getTitle(){
+        return this.title;
+    }
+
+    public String getAuthor(){
+        return this.author;
+    }
+
+    public double getPrice(){
+        return this.price;
+    }
+
+    public int getPageCount(){
+        return this.pageCount;
+    }
+
+    public boolean getIsCheckedOut(){
+        return this.isCheckedOut;
+    }
+
+    /***** MUTATORS *****/
+    //one setter for each instance variable and a setAll is required.
+
+    public void setTitle(String title)
+    {
+        this.title = title;
+    }
+
+    public void setAuthor(String author)
+    {
+        this.author = author;
+    }
+
+    public void setPrice(double price)
+    {
+        this.price = price;
+    }
+
+    public void setPageCount(int pageCount)
+    {
+        this.pageCount = pageCount;
+    }
+
+    public void setIsCheckedOut(boolean isCheckedOut)
+    {
+        this.isCheckedOut = isCheckedOut;
+    }
+
+    public void setAll(String title, String author, double setPrice, int pageCount, boolean isCheckedOut)
+    {
+        this.title = title;
+        this.author = author;
+        this.price = price;
+        this.pageCount = pageCount;
+        this.isCheckedOut = isCheckedOut;
+    }
+
+    /***** OTHER REQUIRED METHODS *****/
+
+    public String toString()
+    {
+        return "Title: " + title + ", Author: " + author + ", Price: " + price + ", Page Count: " + pageCount + ", Checkout status: " + isCheckedOut;
+    }
+    public boolean equals(Book other)
+    {
+        return  this.title.equals(other.title)
+                && this.author.equals(other.author)
+                && this.price == other.price
+                && this.pageCount == other.pageCount
+                && this.isCheckedOut == other.isCheckedOut;
+    }
+}
